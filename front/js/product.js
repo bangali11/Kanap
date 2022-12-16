@@ -76,9 +76,7 @@ button.addEventListener("click", handleClick)
 //fonction qui permet de recuperer les la couleurs et la quantité du produits
 function handleClick() {
     const colors = document.querySelector("#colors").value
-    console.log(colors)
     const quantity = document.querySelector("#quantity").value
-    console.log(quantity)
 
     //condition de verification si false la fonction s'arrête
     if (verifCommande(colors, quantity)) return;
@@ -89,6 +87,16 @@ function handleClick() {
 //fonction qui construit deux objet et recupere les informations du produits pour les stocker dans le localStorage 
 //avec comme argument la couleurs et l'objet
 function saveCommande(colors, quantity){
+
+    //const exist = localStorage.find(item => item.id === id && item.colors === colors)
+    /*for (let i = 0; i < localStorage.length; i++){
+        console.log(localStorage.getItem(localStorage.key(i)))
+    }*/
+
+    //console.log(localStorage.value)
+
+
+
     //consctrution de l'objet de l'article
     const data = {
         id: id,
@@ -105,9 +113,17 @@ function saveCommande(colors, quantity){
         id: id,
         colors:colors,
     }
+    
+    //Verifie si le produit existe deja dans le panier
+    if((localStorage.getItem(JSON.stringify(idColors)))){
+        //si oui elle additionne la quantité existante a la nouvelle quantité
+        data.quantity += JSON.parse(localStorage.getItem(JSON.stringify(idColors))).quantity 
+    }
+    
 
     //convertir les objets en JSON et stocke dans le localStorage car localstorage ne peut garder un objet obliger de le passer en JSON ou string
     localStorage.setItem(JSON.stringify(idColors), JSON.stringify(data))
+    
 }
 
 //fonction qui sert a faire des verification a l'utilisateur en faisant des alert 
