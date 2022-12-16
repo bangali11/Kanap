@@ -87,16 +87,6 @@ function handleClick() {
 //fonction qui construit deux objet et recupere les informations du produits pour les stocker dans le localStorage 
 //avec comme argument la couleurs et l'objet
 function saveCommande(colors, quantity){
-
-    //const exist = localStorage.find(item => item.id === id && item.colors === colors)
-    /*for (let i = 0; i < localStorage.length; i++){
-        console.log(localStorage.getItem(localStorage.key(i)))
-    }*/
-
-    //console.log(localStorage.value)
-
-
-
     //consctrution de l'objet de l'article
     const data = {
         id: id,
